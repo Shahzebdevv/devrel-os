@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Opportunity {
+  id           Int      @id @default(autoincrement())
+  title        String
+  organization String
+  url          String?
+  category     String   // Technical Writing, Open Source, Web3, DevRel, Community, Fellowship, Internship
+  status       String   // Researching, Applied, Active, Rejected, Completed
+  description  String?
+  notes        Note[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String
+  platform  String   // DEV, Hashnode, Medium, HackerNoon
+  status    String   // Idea, Draft, Editing, Published
+  url       String?
+  notes     Note[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contribution {
+  id         Int      @id @default(autoincrement())
+  title      String
+  repository String
+  type       String   // Documentation, Code, Translation, Tutorial
+  status     String   // Planned, In Progress, Submitted, Merged, Closed
+  url        String?
+  notes      Note[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Community {
+  id        Int      @id @default(autoincrement())
+  name      String
+  role      String?
+  joinedAt  DateTime?
+  notes     Note[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WeeklyReview {
+  id          Int      @id @default(autoincrement())
+  weekStart   String
+  weekEnd     String
+  learned    String?
+  built      String?
+  wrote      String?
+  contributed String?
+  reflection String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Goal {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  icon        String   @default("Target")
+  isActive    Boolean  @default(true)
+  progress    Float    @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  category  String?  // Article Draft, Opportunity Notes, Learning, General
+  opportunityId Int?
+  articleId     Int?
+  contributionId Int?
+  communityId   Int?
+  opportunity Opportunity? @relation(fields: [opportunityId], references: [id])
+  article     Article?     @relation(fields: [articleId], references: [id])
+  contribution Contribution? @relation(fields: [contributionId], references: [id])
+  community   Community?   @relation(fields: [communityId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
