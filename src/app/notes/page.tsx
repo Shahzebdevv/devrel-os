@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getNotes } from "@/actions/note"
 import { NotesEditor } from "@/components/notes/notes-editor"
 

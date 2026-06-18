@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getGoals } from "@/actions/goal"
 import { GoalsDashboard } from "@/components/goals/goals-dashboard"
 

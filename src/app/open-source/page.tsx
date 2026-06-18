@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getContributions } from "@/actions/contribution"
 import { ContributionForm } from "@/components/open-source/contribution-form"
 import { ContributionTable } from "@/components/open-source/contribution-table"

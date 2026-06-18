@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getCommunities } from "@/actions/community"
 import { CommunityForm } from "@/components/community/community-form"
 import { CommunityGrid } from "@/components/community/community-grid"

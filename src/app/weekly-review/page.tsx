@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getReviews } from "@/actions/review"
 import { ReviewForm } from "@/components/weekly-review/review-form"
 import { ReviewList } from "@/components/weekly-review/review-list"

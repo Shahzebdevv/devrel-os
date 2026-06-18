@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getArticles } from "@/actions/article"
 import { ArticleForm } from "@/components/articles/article-form"
 import { ArticlesPageClient } from "@/components/articles/articles-page-client"

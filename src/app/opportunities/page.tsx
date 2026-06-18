@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getOpportunities } from "@/actions/opportunity"
 import { OpportunityForm } from "@/components/opportunities/opportunity-form"
 import { OpportunityTable } from "@/components/opportunities/opportunity-table"
